@@ -1,7 +1,12 @@
-const Hand = ({hand}) => {
+const Hand = ({hand, onHandClick}) => {
+
+    const handleClick = () => {
+        onHandClick(hand);
+    }
+
     return (
         <>
-            <li>{hand}</li>
+            <li onClick={handleClick}>{hand}</li>
         </>
     )
 }
