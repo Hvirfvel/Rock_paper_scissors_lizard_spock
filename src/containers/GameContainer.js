@@ -9,13 +9,17 @@ const GameContainer = () => {
     const [winner, setWinner] = useState("");
 
     const hands = ["rock", "paper", "scissors", "lizard", "spock"];
-    const win_hierarchy = {
+    const handsHierarchy = {
         "scissors": ["paper", "lizard"],
         "paper": ["rock", "spock"],
         "rock": ["lizard", "scissors"],
         "lizard": ["spock", "paper"],
         "spock": ["scissors", "rock"]
     }
+
+    useEffect(() => {
+        getWinner();
+    }, [computerHand])
 
     const onHandClick = (hand) => {
         setUserHand(hand);
@@ -26,18 +30,35 @@ const GameContainer = () => {
         const randomHand = hands[randomHandIndex];
         setComputerHand(randomHand);
     }
+    
 
     const getWinner = () => {
+        console.log(handsHierarchy[userHand]);
+        const userBeats = handsHierarchy[userHand];
+        if (computerHand !== "") {
+            const computerBeats = handsHierarchy[computerHand];
+            console.log(handsHierarchy[computerHand]);
+                if (userBeats.includes(computerHand)) {
+                    setWinner(userHand);
+                }
+                else if (computerBeats.includes(userHand)) {
+                    setWinner(computerHand);
+                }
+                else {
+                    setWinner(null);
+                }
 
+        }
     }
 
     const handlePlayClick = () => {
         if (userHand !== "") {
             setPlayButton(true);
             getComputerHand();
-            getWinner();
+            console.log("play clicked");
+            }
         }
-    }
+    
 
     
 
