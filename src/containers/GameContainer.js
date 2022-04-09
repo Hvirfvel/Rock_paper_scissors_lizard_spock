@@ -16,6 +16,8 @@ const GameContainer = () => {
         "lizard": ["spock", "paper"],
         "spock": ["scissors", "rock"]
     }
+    const user = "You";
+    const computer = "Computer";
 
     useEffect(() => {
         getWinner();
@@ -39,13 +41,13 @@ const GameContainer = () => {
             const computerBeats = handsHierarchy[computerHand];
             console.log(handsHierarchy[computerHand]);
                 if (userBeats.includes(computerHand)) {
-                    setWinner(userHand);
+                    setWinner({"name": "You", "hand": userHand});
                 }
                 else if (computerBeats.includes(userHand)) {
-                    setWinner(computerHand);
+                    setWinner({"name": "Computer", "hand": computerHand});
                 }
                 else {
-                    setWinner(null);
+                    setWinner({"name": "draw", "hand": userHand});
                 }
 
         }
@@ -59,21 +61,28 @@ const GameContainer = () => {
             }
         }
     
-
+    const handlePlayAgainClick = () => {
+        setPlayButton(false);
+        setUserHand("");
+        setComputerHand("");
+        setWinner("");
+    }
     
 
     return (
         <>
-            <h2>GameContainer</h2>
+            <h1>Rock, paper, scissors, lizard, spock</h1>
             {!playButton ? 
             <HandList hands={hands} onHandClick={onHandClick}/> : 
             <div>
+                {winner.name === "draw" ? <h2>It's a draw!</h2> :
+                <h2>{winner.name} won!</h2>}
                 <p>{userHand}</p>
                 <p>{computerHand}</p>
             </div>}
 
             {!playButton ? <button onClick={handlePlayClick}>Play</button>
-            : <button>Play Again</button>}
+            : <button onClick={handlePlayAgainClick}>Play Again</button>}
 
         </>
     )
