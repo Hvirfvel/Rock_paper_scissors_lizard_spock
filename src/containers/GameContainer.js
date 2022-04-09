@@ -29,8 +29,16 @@ const GameContainer = () => {
     return (
         <>
             <h2>GameContainer</h2>
-            <HandList hands={hands} onHandClick={onHandClick}/>
-            <button onClick={handlePlayClick}>Play</button>
+            {!playButton ? 
+            <HandList hands={hands} onHandClick={onHandClick}/> : 
+            <div>
+                <p>{userHand}</p>
+                <p>{computerHand}</p>
+            </div>}
+
+            {!playButton ? <button onClick={handlePlayClick}>Play</button>
+            : <button>Play Again</button>}
+
         </>
     )
 }
