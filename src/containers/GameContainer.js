@@ -7,10 +7,6 @@ const GameContainer = () => {
     const [computerHand, setComputerHand] = useState("");
     const [playButton, setPlayButton] = useState(false);
 
-    useEffect(() => {
-        getComputerHand();
-    }, [playButton])
-
     const hands = ["rock", "paper", "scissors", "lizard", "spock"];
 
     const onHandClick = (hand) => {
@@ -18,7 +14,10 @@ const GameContainer = () => {
     }
 
     const handlePlayClick = () => {
-        setPlayButton(true);
+        if (userHand !== "") {
+            setPlayButton(true);
+            getComputerHand();
+        }
     }
 
     const getComputerHand = () => {
