@@ -1,10 +1,14 @@
 import Hand from "./Hand";
 
-const HandList = () => {
+const HandList = ({hands}) => {
+
+    const handNodes = hands.map((hand) => {
+        return (<Hand hand={hand}/>)
+    })
+
     return (
         <>
-            <h2>HandList</h2>
-            <Hand/>
+            {handNodes}
         </>
     )
 }

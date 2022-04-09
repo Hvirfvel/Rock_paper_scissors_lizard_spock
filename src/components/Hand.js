@@ -1,6 +1,8 @@
-const Hand = () => {
+const Hand = ({hand}) => {
     return (
-        <p>Hand</p>
+        <>
+            <li>{hand}</li>
+        </>
     )
 }
 

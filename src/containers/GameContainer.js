@@ -7,7 +7,7 @@ const GameContainer = () => {
     return (
         <>
             <h2>GameContainer</h2>
-            <HandList/>
+            <HandList hands={hands}/>
         </>
     )
 }
