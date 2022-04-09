@@ -1,8 +1,11 @@
 import './App.css';
+import GameContainer from './containers/GameContainer';
 
 function App() {
   return (
-    <h1>Hello World</h1>
+    <>
+      <GameContainer/>
+    </>
   );
 }
 
