@@ -16,8 +16,6 @@ const GameContainer = () => {
         "lizard": ["spock", "paper"],
         "spock": ["scissors", "rock"]
     }
-    const user = "You";
-    const computer = "Computer";
 
     useEffect(() => {
         getWinner();
@@ -35,11 +33,9 @@ const GameContainer = () => {
     
 
     const getWinner = () => {
-        console.log(handsHierarchy[userHand]);
         const userBeats = handsHierarchy[userHand];
         if (computerHand !== "") {
             const computerBeats = handsHierarchy[computerHand];
-            console.log(handsHierarchy[computerHand]);
                 if (userBeats.includes(computerHand)) {
                     setWinner({"name": "You", "hand": userHand});
                 }
@@ -57,7 +53,6 @@ const GameContainer = () => {
         if (userHand !== "") {
             setPlayButton(true);
             getComputerHand();
-            console.log("play clicked");
             }
         }
     
